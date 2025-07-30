@@ -30,6 +30,6 @@ public abstract class Item {
     @Override
     public String toString() {
         return " Item -> " +
-               " | Name: " + name;
+                " | Name: " + name;
     }
 }

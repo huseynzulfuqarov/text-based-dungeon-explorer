@@ -5,28 +5,42 @@ import java.util.Objects;
 
 public class Player extends Entity {
     private ArrayList<Item> inventory;
+
     public Player(String name, int health, ArrayList<Item> inventory) {
         super(name, health);
         this.inventory = inventory;
     }
 
-    public void pickUpItem(Item item){
+    public void pickUpItem(Item item) {
         inventory.add(item);
     }
 
-    public  void useItem(Item item){
+    public void useItem(Item item) {
         inventory.remove(item);
     }
 
-    public void showInventory(){
-        for(Item item : inventory){
+    public void showInventory() {
+        for (Item item : inventory) {
             System.out.println(item);
         }
     }
 
+
+    public boolean heal(int amount) {
+        if (getHealth() != 100) {
+            if (getHealth() + amount >= 100) {
+                setHealth(100);
+            } else {
+                setHealth(getHealth() + amount);
+            }
+            return true;
+        }
+        return false;
+    }
+
     @Override
-    public String attack(){
-       return "You struck with a sword!";
+    public String attack() {
+        return "You struck with a sword!";
     }
 
     @Override
@@ -44,7 +58,7 @@ public class Player extends Entity {
 
     @Override
     public String toString() {
-        return "Player -> " + super.toString()+
+        return "Player -> " + super.toString() +
                 " | Inventory: " + inventory.toString();
     }
 }

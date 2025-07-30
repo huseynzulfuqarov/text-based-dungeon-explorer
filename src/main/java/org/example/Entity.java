@@ -18,18 +18,6 @@ public abstract class Entity {
     public int getHealth() {
         return health;
     }
-    public boolean setHealth(int health) {
-        if (health < 100) {
-            if(this.health + health > 100) {
-                this.health = 100;
-            }
-            else {
-                this.health += health;
-            }
-            return true;
-        }
-        return false;
-    }
 
     public abstract String attack();
 
@@ -41,6 +29,10 @@ public abstract class Entity {
 
     public boolean isAlive() {
         return health > 0;
+    }
+
+    protected void setHealth(int newHealth) {
+       this.health = newHealth;
     }
 
     @Override
